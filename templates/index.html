@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="/static/style.css" rel="stylesheet">
+        <title>TDEE Calculator</title>
+    </head>
+    <body>
+        <div class="header">
+            <h1>TDEE Calculator</h1>
+        </div>
+
+        <div class="container">
+            <h2>The purpose of the TDEE Calculator is to calculate your Total Daily Energy Expenditure. A measure of how many calories you burn per day.</h2>
+        </div>
+
+        <div class = "container">
+            <div class="section">
+                <form method="POST">
+                    <hr>
+                    <h2>Input your information below.</h2>
+
+                    <p>
+                        <label for="gender">Gender:</label>
+                        <input type="radio" id="male" name="gender" value="male" {% if request.form.gender == 'male' %} checked {% endif %}>
+                        <label for="male">Male</label>
+                        <input type="radio" id="female" name="gender" value="female" {% if request.form.gender == 'female' %} checked {% endif %}>
+                        <label for="female">Female</label><br><br>
+                    </p>
+                    <p>
+                        <label for="age">Age: </label>
+                        <input type="text" name="age" id="age" style="width:60px;" maxlength="3" value="{{ request.form.age if request.form.age }}" required>
+                    </p>
+                    <p>
+                        <label for="weight">Weight: </label>
+                        <input type="number" name="weight" id="weight" placeholder="kg" style="width:70px;" maxlength="3" value="{{ request.form.weight if request.form.weight }}" required>
+
+
+                    </p>
+                    <p>
+                        <label for="height">Height: </label>
+                        <input type="text" name="height" id="height" placeholder="cm" style="width:70px;" maxlength="3" value="{{ request.form.height if request.form.height }}" required>
+                    </p>
+                    <p>
+                        <label for="Activity">Activity Level: </label>
+                            <select id="activity_level" name="activity_level" style="width:200px;" required>
+                            <option value="sedentary" {% if request.form.activity_level == 'sedentary' %} selected {% endif %}>Sedentary (office job)</option>
+                            <option value="light" {% if request.form.activity_level == 'light' %} selected {% endif %}>Light Exercise (1-2 days/week)</option>
+                            <option value="moderate" {% if request.form.activity_level == 'moderate' %} selected {% endif %}>Moderate Exercise (3-5 days/week)</option>
+                            <option value="heavy" {% if request.form.activity_level == 'heavy' %} selected {% endif %}>Heavy Exercise (6-7 days/week)</option>
+                            <option value="athlete" {% if request.form.activity_level == 'athlete' %} selected {% endif %}>Athlete (2x per day)</option>
+                            </select>
+                    </p>
+                    <input type="submit" value="Calculate TDEE">
+                </form>
+            </div>
+        </div>
+        <hr>
+        <div class="container_description">
+            <div class="section">
+                <h2>So how does this work/is this information helpful?</h2>
+                <p>TDEE calculates how many calories (estimate) you burn per day, taking in your exercise levels into account. By knowing your age, weight and height, we can
+                    calculate your Basal Metabolic Rate (BMR), which is the amount of calories you need everyday to just survive. Then we multiply your BMR by your activity levels.
+                    Each activity level is associated to a specific factor, and by multiplying your BMR to your specific activity level factor, we can calculate your Total Daily Expenditure!
+                </p>
+                <p>
+                    So why is this information useful? Well, for starters, if you're new in the fitness industry, or if you're just trying to slim down/bulk up, knowing your
+                    calories is very important. If you aim to slim down, then take your TDEE calorie count, and make sure to go under. If you aim to gain weight, then do the opposite!
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

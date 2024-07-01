@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link href="/static/style.css" rel="stylesheet">
+    <title>TDEE Result</title>
+</head>
+<body>
+    <div class="header">
+        <h1>TDEE Calculator Result</h1>
+    </div>
+    <div class = "container">
+        <div class="section">
+            <p><strong>Weight:</strong> {{ weight }} kg</p>
+            <p><strong>Height:</strong> {{ height }} cm</p>
+            <p><strong>Age:</strong> {{ age }}</p>
+            <p><strong>Gender:</strong> {{ gender }}</p>
+            <p><strong>Activity Level:</strong> {{ activity_level }}</p>
+            <p><strong>BMR (Basal Metabolic Rate):</strong> {{ bmr }}</p>
+            <p><strong>Your Total Daily Energy Expenditure (TDEE) is:</strong> {{ tdee }}</p>
+            <p><a href="/">Calculate Again</a></p>
+        </div>
+    </div>
+</body>
+</html>
